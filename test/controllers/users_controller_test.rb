@@ -59,7 +59,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should patch complete_registration_update success' do
     patch complete_registration_update_users_url, params: { user: {
-      full_name: 'Full Name'
+      full_name: 'Full Name',
+      region: 'Queensland'
     }}
     assert_redirected_to manage_account_url
     @user.reload

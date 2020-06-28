@@ -58,11 +58,14 @@ class UsersController < ApplicationController
   def complete_registration_update
     @user = current_user
     @user.update complete_registration_params
-    if @user.save && @user.full_name.present?
+    if @user.save && @user.full_name.present? && @user.region.present?
       flash[:notice] = 'Your account has been created.'
       redirect_to session[:user_return_to] || manage_account_path
-    else
+    elsif @user.full_name.blank?
       flash[:alert] = 'Plese enter your Full name before proceeding'
+      redirect_to complete_registration_path
+    elsif @user.region.blank?
+      flash[:alert] = 'Please select a Region'
       redirect_to complete_registration_path
     end
   end
@@ -113,6 +116,15 @@ class UsersController < ApplicationController
       challenge_sponsor_contact_enter
       my_project_sponsor_contact
       me_govhack_contact
+      gender
+      first_peoples
+      disability
+      education
+      employment
+      postcode
+      under_18
+      region
+      age
     ]
   end
 

@@ -41,4 +41,11 @@ en:
         my_project_sponsor_contact: Can be contacted by sponsors that are interested in my project?
         me_govhack_contact: Can be contacted by GovHack?
         how_did_you_hear: How did you hear about GovHack?
+        gender: 'What is your gender?'
+        first_peoples: 'Are you of Aboriginal or Torres Strait Islander origin?'
+        disability: 'Do you identify as a person with a disability?'
+        education: 'What is the highest education level you have completed?'
+        employment: 'What is your employment status?'
+        age: 'What is your age category?'
+        postcode: 'What is your postcode?'
   hello: "Hello world"

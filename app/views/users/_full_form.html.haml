@@ -12,11 +12,19 @@
     = form.label :phone_number
     = telephone_field(:user, :phone_number)
   .field
+    = form.label :region
+    = form.select :region,                                                 |
+      options_for_select(User.regions.keys.sort, selected: @user.region)
+  .field
     = form.label :twitter
     = form.text_field :twitter
   .field
     = form.label :slack
     = form.text_field :slack
+  .field
+    = form.label :under_18, 'Are you under 18 years of age?'
+    = form.check_box :under_18, |
+      checked: @user.under_18
   .field
     = form.label :dietary_requirements
     = form.text_field :dietary_requirements
@@ -39,5 +47,44 @@
     = form.label :me_govhack_contact
     = form.check_box :me_govhack_contact, |
       checked: @user.me_govhack_contact
+  %article
+    %strong
+      GovHack values diversity and inclusion. The following fields are
+      completely optional and are used strictly for reporting on our progress
+      in making GovHack inclusive for all. You may choose to skip some or all
+      of the questions. We would be grateful for any answers you do provide
+      and these are stored securely and will not be passed onto a third party
+      except in aggregated, de-identified form.
+  .field
+    = form.label :gender
+    = form.text_field :gender
+  .field
+    = form.label :first_peoples
+    = form.select :first_peoples, |
+      options_for_select(User.first_peoples.keys, selected: @user.first_peoples), |
+      include_blank: true
+  .field
+    = form.label :disability
+    = form.select :disability, |
+      options_for_select(User.disabilities.keys, selected: @user.disability), |
+      include_blank: true
+  .field
+    = form.label :education
+    = form.select :education, |
+      options_for_select(User.educations.keys, selected: @user.education), |
+      include_blank: true
+  .field
+    = form.label :employment
+    = form.select :employment, |
+      options_for_select(User.employments.keys, selected: @user.employment), |
+      include_blank: true
+  .field
+    = form.label :age
+    = form.select :age, |
+      options_for_select(User.ages.keys, selected: @user.age), |
+      include_blank: true
+  .field
+    = form.label :postcode
+    = form.text_field :postcode
   .actions
     = form.submit 'Update Details'
