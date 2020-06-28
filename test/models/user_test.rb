@@ -59,6 +59,15 @@ class UserTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { @assignment.reload }
   end
 
+  test 'enums' do
+    assert User.first_peoples.is_a? Hash
+    assert User.disabilities.is_a? Hash
+    assert User.educations.is_a? Hash
+    assert User.employments.is_a? Hash
+    assert User.regions.is_a? Hash
+    assert User.ages.is_a? Hash
+  end
+
   test 'scopes' do
     assert User.search('one').include? @user
     assert User.mailing_list.include? @user
